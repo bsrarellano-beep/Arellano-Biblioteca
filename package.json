@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "ng": "ng",
     "start": "ng serve --no-hmr --port=3873",
+    "start:dev": "ng serve",
     "test": "ng test",
     "watch": "ng build --watch --configuration development"
   },

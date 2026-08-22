@@ -1,6 +1,31 @@
 import { Route } from '@angular/router';
 
+import { MyComponent } from '@/app/pages/my-component/my-component';
+import { AdminLayout } from '@/app/domains/admin/layout/layout';
+
 export const routes: Route[] = [
+  {
+    path: 'pages',
+    component: AdminLayout,
+    children: [
+      {
+        path: 'my-route',
+        component: MyComponent,
+      },
+      {
+        path: 'books',
+        component: MyComponent,
+      },
+
+      // Ruta de videos
+      {
+        path: 'videos',
+        loadChildren: () =>
+          import('./pages/videos/routes'),
+      },
+    ],
+  },
+
   // Website routes
   {
     path: 'home',

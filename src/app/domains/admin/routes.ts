@@ -6,12 +6,8 @@ const routes: Routes = [
     path: '',
     component: AdminLayout,
     children: [
-      // Ruta inicial
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: '/auth/sign-in',
-      },
+      // Redirect empty path to '/auth/sign-in'
+      { path: '', pathMatch: 'full', redirectTo: '/auth/sign-in' },
 
       // -----------------------------------------------------------------------
       // Dashboards
@@ -22,7 +18,7 @@ const routes: Routes = [
       },
 
       // -----------------------------------------------------------------------
-      // Aplicaciones
+      // General
       // -----------------------------------------------------------------------
       {
         path: 'academy',
@@ -70,14 +66,6 @@ const routes: Routes = [
       },
 
       // -----------------------------------------------------------------------
-      // Videos
-      // -----------------------------------------------------------------------
-      {
-        path: 'videos',
-        loadChildren: () => import('./modules/apps/videos/routes'),
-      },
-
-      // -----------------------------------------------------------------------
       // Extras
       // -----------------------------------------------------------------------
       {
@@ -102,14 +90,14 @@ const routes: Routes = [
       },
 
       // -----------------------------------------------------------------------
-      // Documentación
+      // Documentation
       // -----------------------------------------------------------------------
       {
         path: 'documentation',
         loadChildren: () => import('./modules/documentation/routes'),
       },
 
-      // Página 404
+      // 404
       {
         path: '404',
         pathMatch: 'full',
@@ -117,11 +105,8 @@ const routes: Routes = [
           import('./modules/extras/error/features/error-404'),
       },
 
-      // Cualquier dirección inexistente
-      {
-        path: '**',
-        redirectTo: '404',
-      },
+      // Catch all
+      { path: '**', redirectTo: '404' },
     ],
   },
 ];
